@@ -1,293 +1,244 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>From Manual Mayhem to Automated Mastery</title>
 
 <style>
-
-/* ================= BASE ================= */
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Plus+Jakarta+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;600&display=swap');
 *{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--color-background-tertiary,#f4f2ef);color:var(--color-text-primary,#111);font-size:15px;line-height:1.75;}
 
-:root{
-  --ink:#0a0a0a;
-  --paper:#f8f6f1;
-  --red:#d63031;
-  --mono:#1a1a2e;
-  --border:rgba(10,10,10,.1);
-  --border-strong:rgba(10,10,10,.2);
-}
+.card{max-width:720px;margin:0 auto;background:var(--color-background-primary,#fff);border:1px solid var(--color-border-tertiary,rgba(0,0,0,.1));border-radius:16px;overflow:hidden;}
 
-body{
-  font-family:Arial, sans-serif;
-  background:var(--paper);
-  color:var(--ink);
-  line-height:1.6;
-}
+.top-bar{background:#0a66c2;padding:28px 32px 24px;}
+.top-bar h1{font-family:'DM Serif Display',serif;font-size:clamp(20px,3.5vw,30px);line-height:1.2;color:#fff;margin-bottom:12px;}
+.top-bar h1 em{font-style:italic;color:#fbbf24;}
+.top-bar .sub{font-size:13px;color:rgba(255,255,255,.6);font-weight:300;line-height:1.6;}
+.tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:16px;}
+.tag{font-size:11px;color:rgba(255,255,255,.7);background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);border-radius:20px;padding:3px 10px;font-family:'JetBrains Mono',monospace;}
 
-/* ================= HEADER ================= */
-.masthead{
-  padding:16px 40px;
-  display:flex;
-  justify-content:space-between;
-  border-bottom:2px solid var(--ink);
-}
+.body{padding:32px;background:#ffffff;}
+p{margin-bottom:15px;color:#3d3d3a;font-weight:300;line-height:1.78;}
+p strong{font-weight:600;color:#111;}
+h2{font-family:'DM Serif Display',serif;font-size:21px;line-height:1.25;color:#111;margin:36px 0 12px;}
+h3{font-size:13px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:#0a66c2;margin:24px 0 10px;}
+hr.d{border:none;border-top:1px solid rgba(0,0,0,.1);margin:28px 0;}
 
-.masthead-tags{
-  display:flex;
-  gap:10px;
-  flex-wrap:wrap;
-}
+.hook{border-left:4px solid #0a66c2;border-radius:0 10px 10px 0;background:#e8f0f9;padding:16px 20px;margin:20px 0;}
+.hook p{margin:0;font-family:'DM Serif Display',serif;font-size:18px;font-style:italic;color:#111;}
 
-/* ================= HERO ================= */
-.hero{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-}
+.pain-box{background:#fff0f0;border:1px solid #fca5a5;border-radius:12px;padding:18px 20px;margin:18px 0;}
+.pain-head{font-size:11px;font-weight:600;color:#b91c1c;letter-spacing:.1em;text-transform:uppercase;margin-bottom:12px;font-family:'Plus Jakarta Sans',sans-serif;}
+.pain-item{display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#7f1d1d;margin-bottom:8px;font-weight:400;}
+.pain-item:last-child{margin-bottom:0;}
+.pbullet{width:6px;height:6px;border-radius:50%;background:#e84545;flex-shrink:0;margin-top:8px;}
 
-.hero-left{
-  padding:60px;
-  border-right:2px solid var(--ink);
-}
+.flow-wrap{background:#f3f6f9;border:1px solid rgba(0,0,0,.1);border-radius:12px;padding:20px 16px;margin:20px 0;}
+.flow-cap{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#666;margin-bottom:14px;font-family:'Plus Jakarta Sans',sans-serif;}
 
-.hero-right{
-  background:var(--mono);
-  color:#fff;
-  padding:60px;
-}
+.feature-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:18px 0;}
+.feature-card{background:#f3f6f9;border:1px solid rgba(0,0,0,.08);border-radius:10px;padding:14px 15px;}
+.feature-card .fc-step{font-size:10px;font-weight:600;color:#0a66c2;letter-spacing:.1em;margin-bottom:6px;font-family:'Plus Jakarta Sans',sans-serif;}
+.feature-card h4{font-size:13px;font-weight:600;color:#111;margin-bottom:4px;}
+.feature-card p{font-size:12.5px;margin:0;color:#555;}
 
-.hero-h1{
-  font-size:60px;
-  font-weight:bold;
-}
+.field-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:16px 0;}
+.field-chip{background:#ffffff;border:1.5px solid #d0e3f5;border-radius:8px;padding:10px 14px;font-family:'Plus Jakarta Sans',sans-serif;font-size:13px;font-weight:500;color:#0c2d55;display:flex;align-items:center;gap:10px;}
+.chip-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
+.cd-g{background:#0d9488;}.cd-b{background:#0a66c2;}.cd-o{background:#ea580c;}.cd-r{background:#dc2626;}
 
-.stat-number{
-  font-size:60px;
-}
+.impact-row{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:18px 0;}
+.impact-card{background:#f3f6f9;border:1px solid rgba(0,0,0,.08);border-radius:10px;padding:14px 12px;text-align:center;}
+.impact-n{font-family:'DM Serif Display',serif;font-size:28px;color:#0a66c2;line-height:1;margin-bottom:5px;}
+.impact-l{font-size:11px;color:#555;line-height:1.4;}
 
-/* ================= CONTENT ================= */
-.content-wrap{
-  padding:40px;
-}
+.takeaway{background:#e8f0fb;border:1px solid #93c5fd;border-radius:12px;padding:18px 20px;margin:20px 0;}
+.takeaway-head{font-size:11px;font-weight:600;color:#1d4ed8;letter-spacing:.1em;text-transform:uppercase;margin-bottom:10px;font-family:'Plus Jakarta Sans',sans-serif;}
+.takeaway-item{display:flex;gap:9px;align-items:flex-start;font-size:13.5px;color:#1e3a5f;margin-bottom:8px;font-weight:400;}
+.takeaway-item:last-child{margin-bottom:0;}
+.tbullet{width:6px;height:6px;border-radius:50%;background:#0a66c2;flex-shrink:0;margin-top:8px;}
 
-/* ================= GRID SECTIONS ================= */
-.problem-grid,
-.flow-steps,
-.arch-layers,
-.benefits-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-}
+.closing{background:#0a66c2;border-radius:12px;padding:24px;margin-top:28px;text-align:center;}
+.closing p{color:rgba(255,255,255,.75);font-size:13.5px;margin-bottom:6px;font-weight:300;}
+.closing .tagline{font-family:'DM Serif Display',serif;font-size:18px;font-style:italic;color:#fff;margin-bottom:0;}
 
-.problem-item,
-.flow-step,
-.arch-layer,
-.benefit-item{
-  padding:20px;
-  border:1px solid var(--border);
-}
-
-/* ================= TABLE ================= */
-.compare-table-wrap{
-  overflow:hidden;
-}
-
-table{
-  width:100%;
-  border-collapse:collapse;
-}
-
-td,th{
-  padding:10px;
-  border:1px solid var(--border);
-}
-
-/* ================= RESPONSIVE FIX ================= */
-
-/* Tablet */
-@media (max-width: 1024px){
-
-  .hero{
-    grid-template-columns:1fr;
-  }
-
-  .hero-left{
-    border-right:none;
-    border-bottom:2px solid var(--ink);
-  }
-
-}
-
-/* Mobile */
-@media (max-width:768px){
-
-  /* MASTHEAD FIX */
-  .masthead {
-    padding: 12px 16px;
-    flex-wrap: wrap;
-    gap: 10px;
-  }
-  
-  .masthead-tags {
-    width: 100%;
-    justify-content: flex-start;
-  }
-
-  /* HERO FIX */
-  .hero{
-    display:flex !important;
-    flex-direction:column !important;
-  }
-
-  .hero-left,
-  .hero-right{
-    width:100%;
-    padding:24px 16px;
-  }
-
-  .hero-right{
-    min-height:auto;
-  }
-
-  /* TEXT */
-  .hero-h1{
-    font-size:28px;
-    line-height:1.3;
-  }
-
-  .stat-number{
-    font-size:36px;
-  }
-
-  /* CONTENT */
-  .content-wrap{
-    padding:16px;
-  }
-
-  /* GRID FIX */
-  .problem-grid,
-  .flow-steps,
-  .arch-layers,
-  .benefits-grid{
-    display:flex !important;
-    flex-direction:column !important;
-    gap:0;
-  }
-
-  .problem-item,
-  .flow-step,
-  .arch-layer,
-  .benefit-item{
-    border-right:none !important;
-    padding:16px;
-  }
-
-  /* TABLE FIX */
-  .compare-table-wrap{
-    overflow-x:auto;
-  }
-
-  table{
-    min-width:500px;
-    font-size:12px;
-  }
-  
-  td, th {
-    padding: 8px;
-  }
-
-}
-
-/* Small Mobile */
-@media (max-width:480px){
-
-  .masthead {
-    padding: 10px 12px;
-    flex-direction: column;
-  }
-
-  .hero-h1{
-    font-size:20px;
-  }
-
-  .stat-number {
-    font-size: 28px;
-  }
-
-  table {
-    min-width: 100%;
-    font-size: 11px;
-  }
-
-  td, th {
-    padding: 6px 4px;
-  }
-
-}
-
+.hashtags{margin-top:20px;display:flex;flex-wrap:wrap;gap:7px;}
+.ht{font-size:12px;color:#0a66c2;font-weight:500;}
 </style>
-</head>
 
-<body>
-
-<header class="masthead">
-  <div>DevOps Engineering</div>
-  <div class="masthead-tags">
-    <span>Java</span>
-    <span>Jenkins</span>
-    <span>API</span>
-  </div>
-</header>
-
-<section class="hero">
-  <div class="hero-left">
-    <h1 class="hero-h1">From Manual Mayhem to Automated Mastery</h1>
-    <p>You spend more time checking Jenkins than writing tests.</p>
+<div class="card">
+  <div class="top-bar">
+    <h1>I Built a Jenkins Monitoring Utility That <em>Eliminated</em> Manual Build Tracking — Here's How</h1>
+    <p class="sub">A Java-based solution that reads job names from Excel, queries Jenkins, and auto-delivers a complete build status report — no manual logins, no missed updates.</p>
+    <div class="tags">
+      <span class="tag">Java</span>
+      <span class="tag">Jenkins</span>
+      <span class="tag">DevOps</span>
+      <span class="tag">Automation</span>
+      <span class="tag">Apache POI</span>
+      <span class="tag">CI/CD</span>
+    </div>
   </div>
 
-  <div class="hero-right">
-    <div class="stat-number">80%</div>
-    <p>Reduction in effort</p>
+  <div class="body">
+
+    <div class="hook">
+      <p>"What if you never had to manually log into Jenkins to check a build status again?"</p>
+    </div>
+
+    <p>That one question led me to build a utility that has since saved <strong>hours every single week</strong> — and completely changed how automation pipelines are monitored.</p>
+
+    <p>Let me walk you through the problem, the solution, and the thinking behind it.</p>
+
+    <hr class="d"/>
+
+    <h2>The Problem I Was Trying to Solve</h2>
+
+    <p>Every time an automation build ran on Jenkins, someone had to do this manually:</p>
+
+    <div class="pain-box">
+      <div class="pain-head">The daily manual loop — before automation</div>
+      <div class="pain-item"><div class="pbullet"></div><span>Log into Jenkins and navigate to each automation job one by one</span></div>
+      <div class="pain-item"><div class="pbullet"></div><span>Open the console output to check if the build <strong>passed or failed</strong></span></div>
+      <div class="pain-item"><div class="pbullet"></div><span>Note which branch triggered the build and who (if anyone) aborted it</span></div>
+      <div class="pain-item"><div class="pbullet"></div><span>Manually compile all this information and share it — every single day</span></div>
+    </div>
+
+    <p>Running <strong>multiple automation builds</strong> across different jobs and branches — the monitoring overhead was quietly consuming real engineering time. Time that should have been spent on improving frameworks and writing better tests.</p>
+
+    <p>Jenkins does send email notifications by default — but they only say a build passed or failed. <strong>That's not enough context when you're managing multiple pipelines.</strong></p>
+
+    <hr class="d"/>
+
+    <h2>The Solution: A Custom Java Utility</h2>
+
+    <p>I designed a utility in <strong>Java</strong> that handles all of this automatically — from reading job names to delivering the final status report. Here's exactly how it works:</p>
+
+    <div class="flow-wrap">
+      <div class="flow-cap">How the utility works — step by step</div>
+      <svg width="100%" viewBox="0 0 640 130" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <marker id="arw" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+            <path d="M2 1L8 5L2 9" fill="none" stroke="#0a66c2" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </marker>
+        </defs>
+        <rect x="8" y="38" width="118" height="54" rx="9" fill="#dbeafe" stroke="#93c5fd" stroke-width="1"/>
+        <text x="67" y="62" text-anchor="middle" font-family="Plus Jakarta Sans,sans-serif" font-size="11" font-weight="600" fill="#1e3a8a">Excel Input</text>
+        <text x="67" y="78" text-anchor="middle" font-family="Plus Jakarta Sans,sans-serif" font-size="10" fill="#1d4ed8">Job names list</text>
+        <line x1="128" y1="65" x2="152" y2="65" stroke="#0a66c2" stroke-width="1.5" marker-end="url(#arw)"/>
+
+        <rect x="154" y="38" width="118" height="54" rx="9" fill="#dcfce7" stroke="#86efac" stroke-width="1"/>
+        <text x="213" y="62" text-anchor="middle" font-family="Plus Jakarta Sans,sans-serif" font-size="11" font-weight="600" fill="#14532d">Jenkins API</text>
+        <text x="213" y="78" text-anchor="middle" font-family="Plus Jakarta Sans,sans-serif" font-size="10" fill="#166534">Login + fetch builds</text>
+        <line x1="274" y1="65" x2="298" y2="65" stroke="#0a66c2" stroke-width="1.5" marker-end="url(#arw)"/>
+
+        <rect x="300" y="38" width="118" height="54" rx="9" fill="#fef9c3" stroke="#fde047" stroke-width="1"/>
+        <text x="359" y="62" text-anchor="middle" font-family="Plus Jakarta Sans,sans-serif" font-size="11" font-weight="600" fill="#713f12">Status Check</text>
+        <text x="359" y="78" text-anchor="middle" font-family="Plus Jakarta Sans,sans-serif" font-size="10" fill="#92400e">Pass / Fail per job</text>
+        <line x1="420" y1="65" x2="444" y2="65" stroke="#0a66c2" stroke-width="1.5" marker-end="url(#arw)"/>
+
+        <rect x="446" y="38" width="118" height="54" rx="9" fill="#f3e8ff" stroke="#d8b4fe" stroke-width="1"/>
+        <text x="505" y="62" text-anchor="middle" font-family="Plus Jakarta Sans,sans-serif" font-size="11" font-weight="600" fill="#581c87">Excel + Email</text>
+        <text x="505" y="78" text-anchor="middle" font-family="Plus Jakarta Sans,sans-serif" font-size="10" fill="#7e22ce">Report delivered</text>
+
+        <text x="67" y="110" text-anchor="middle" font-family="Plus Jakarta Sans,sans-serif" font-size="9" fill="#999" letter-spacing="0.07em">STEP 1</text>
+        <text x="213" y="110" text-anchor="middle" font-family="Plus Jakarta Sans,sans-serif" font-size="9" fill="#999" letter-spacing="0.07em">STEP 2</text>
+        <text x="359" y="110" text-anchor="middle" font-family="Plus Jakarta Sans,sans-serif" font-size="9" fill="#999" letter-spacing="0.07em">STEP 3</text>
+        <text x="505" y="110" text-anchor="middle" font-family="Plus Jakarta Sans,sans-serif" font-size="9" fill="#999" letter-spacing="0.07em">STEP 4</text>
+      </svg>
+    </div>
+
+    <div class="feature-grid">
+      <div class="feature-card">
+        <div class="fc-step">STEP 1</div>
+        <h4>Excel as the input source</h4>
+        <p>A simple Excel sheet with all Jenkins job names. Add or remove jobs anytime — no code changes needed.</p>
+      </div>
+      <div class="feature-card">
+        <div class="fc-step">STEP 2</div>
+        <h4>Programmatic Jenkins login</h4>
+        <p>The utility authenticates into Jenkins via REST API — no browser, no manual navigation, no human involvement.</p>
+      </div>
+      <div class="feature-card">
+        <div class="fc-step">STEP 3</div>
+        <h4>Build status per job</h4>
+        <p>For each job in the list, it fetches the latest build result — pass or fail — along with key context like branch and who ran it.</p>
+      </div>
+      <div class="feature-card">
+        <div class="fc-step">STEP 4</div>
+        <h4>Report written and emailed</h4>
+        <p>All statuses are written into a clean Excel output and automatically emailed to the relevant stakeholders. Done.</p>
+      </div>
+    </div>
+
+    <hr class="d"/>
+
+    <h3>What It Captures for Every Build</h3>
+
+    <p>The utility captures exactly what matters — the <strong>essential context around every build status</strong>:</p>
+
+    <div class="field-grid">
+      <div class="field-chip"><div class="chip-dot cd-g"></div>Build Status (Pass / Fail)</div>
+      <div class="field-chip"><div class="chip-dot cd-b"></div>Job Name</div>
+      <div class="field-chip"><div class="chip-dot cd-b"></div>Job Build Number</div>
+      <div class="field-chip"><div class="chip-dot cd-o"></div>Git Branch Name</div>
+      <div class="field-chip"><div class="chip-dot cd-o"></div>Job Start Time</div>
+      <div class="field-chip"><div class="chip-dot cd-r"></div>Job Aborted By (who?)</div>
+      <div class="field-chip"><div class="chip-dot cd-b"></div>Executed Machine / Agent</div>
+      <div class="field-chip"><div class="chip-dot cd-b"></div>Project Name</div>
+    </div>
+
+    <p>All of this — captured automatically, written to Excel, and delivered via email. <strong>No manual login. No copy-paste. No missed builds.</strong></p>
+
+    <hr class="d"/>
+
+    <h2>The Results</h2>
+
+    <div class="impact-row">
+      <div class="impact-card"><div class="impact-n">80%</div><div class="impact-l">reduction in time spent on manual build monitoring</div></div>
+      <div class="impact-card"><div class="impact-n">Zero</div><div class="impact-l">manual errors in build status reporting since day one</div></div>
+      <div class="impact-card"><div class="impact-n">100%</div><div class="impact-l">accurate build context — delivered automatically, every time</div></div>
+    </div>
+
+    <hr class="d"/>
+
+    <h2>Why Java?</h2>
+
+    <p>Already working within a Java ecosystem — Selenium, TestNG, Maven — Java was the natural choice. This utility isn't an external tool bolted on the side. It's <strong>part of the same framework</strong>, reusable and easy to maintain.</p>
+
+    <div class="takeaway">
+      <div class="takeaway-head">Technical stack</div>
+      <div class="takeaway-item"><div class="tbullet"></div><span><strong>Apache POI</strong> — to read the input Excel and write the output report</span></div>
+      <div class="takeaway-item"><div class="tbullet"></div><span><strong>Jenkins REST API</strong> — to authenticate and pull build data programmatically</span></div>
+      <div class="takeaway-item"><div class="tbullet"></div><span><strong>Java HTTP Client</strong> — for API communication and JSON parsing</span></div>
+      <div class="takeaway-item"><div class="tbullet"></div><span><strong>JavaMail API</strong> — to automatically deliver the report to the right people</span></div>
+    </div>
+
+    <hr class="d"/>
+
+    <h2>The Bigger Lesson</h2>
+
+    <p>We talk a lot about automating tests. But we rarely talk about <strong>automating the monitoring of those tests</strong>.</p>
+
+    <p>If you're still manually logging into Jenkins after every build, checking statuses one by one, and compiling reports by hand — that's not a testing problem. That's an <strong>operational overhead problem</strong>. And it has a straightforward solution.</p>
+
+    <p>The best automation engineers don't just build test frameworks. They build <strong>the entire ecosystem around those frameworks</strong> — including the visibility layer that keeps everyone informed in real time.</p>
+
+    <div class="closing">
+      <p>If you're still checking Jenkins build statuses manually, this is your sign to stop.</p>
+      <p class="tagline">Automate your tests. Automate your pipelines.<br>Now — automate your monitoring too.</p>
+    </div>
+
+    <p style="margin-top:20px;font-size:13.5px;color:#555;font-weight:300;">Happy to share more about the implementation or the design decisions. Drop a comment or DM me — let's talk automation.</p>
+
+    <p style="font-size:13px;color:#888;font-weight:300;margin-bottom:8px;">Are you still checking Jenkins builds manually? Would love to hear about it in the comments.</p>
+
+    <div class="hashtags">
+      <span class="ht">#DevOps</span>&nbsp;
+      <span class="ht">#Jenkins</span>&nbsp;
+      <span class="ht">#JavaDeveloper</span>&nbsp;
+      <span class="ht">#TestAutomation</span>&nbsp;
+      <span class="ht">#CICD</span>&nbsp;
+      <span class="ht">#AutomationEngineering</span>&nbsp;
+      <span class="ht">#SoftwareEngineering</span>&nbsp;
+      <span class="ht">#QualityEngineering</span>
+    </div>
+
   </div>
-</section>
-
-<div class="content-wrap">
-
-<h2>Problem</h2>
-
-<div class="problem-grid">
-  <div class="problem-item">Time drain</div>
-  <div class="problem-item">Human error</div>
-  <div class="problem-item">Scalability</div>
 </div>
-
-<h2>Solution</h2>
-
-<div class="flow-steps">
-  <div class="flow-step">Step 1</div>
-  <div class="flow-step">Step 2</div>
-  <div class="flow-step">Step 3</div>
-</div>
-
-<h2>Architecture</h2>
-
-<div class="arch-layers">
-  <div class="arch-layer">Input</div>
-  <div class="arch-layer">Processing</div>
-  <div class="arch-layer">Output</div>
-</div>
-
-<h2>Comparison</h2>
-
-<div class="compare-table-wrap">
-<table>
-<tr><th>Metric</th><th>Manual</th><th>Auto</th></tr>
-<tr><td>Time</td><td>5 min</td><td>2 sec</td></tr>
-</table>
-</div>
-
-</div>
-
-</body>
-</html>
